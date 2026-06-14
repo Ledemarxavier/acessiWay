@@ -1,0 +1,84 @@
+/* =========================
+   CONTRASTE — aplicado em #page-content
+   para não quebrar position:fixed da toolbar
+========================= */
+
+html.contrast-high_contrast #page-content {
+    background: #000 !important;
+    color: #fff !important;
+}
+html.contrast-high_contrast #page-content * {
+    background-color: black !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+html.contrast-yellow_black #page-content {
+    background: #000 !important;
+    color: #ff0 !important;
+}
+html.contrast-yellow_black #page-content * {
+    background-color: black !important;
+    color: yellow !important;
+    border-color: yellow !important;
+}
+
+html.contrast-inverted #page-content {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* =========================
+   FONTES
+========================= */
+
+html.font-opendyslexic * {
+    font-family: OpenDyslexic, sans-serif !important;
+}
+
+html.font-arial * {
+    font-family: Arial, sans-serif !important;
+}
+
+html.font-verdana * {
+    font-family: Verdana, sans-serif !important;
+}
+
+html.font-atkinson * {
+    font-family: "Atkinson Hyperlegible", sans-serif !important;
+}
+
+/* =========================
+   TAMANHO
+========================= */
+
+html.font-size-large {
+    font-size: 20px !important;
+}
+
+html.font-size-extra-large {
+    font-size: 24px !important;
+}
+
+/* =========================
+   ESPAÇAMENTO
+========================= */
+
+html.line-spacing-large * {
+    line-height: 2 !important;
+}
+
+/* =========================
+   LUPA VIRTUAL
+========================= */
+
+#virtual-lens {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #1e3a5f;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999998;
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.0);
+}
