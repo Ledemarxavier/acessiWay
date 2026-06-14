@@ -84,10 +84,6 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hidden lg:block"
           >
-            
-              {/* Orange top-left accent */}
-              
-
               {/* Header */}
               <h2 className="text-center font-bold text-white mb-6">
                 Acessibilidade em Primeiro Lugar
