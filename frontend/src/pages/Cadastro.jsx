@@ -115,7 +115,7 @@ export default function Cadastro() {
         try {
 
             const response = await fetch(
-                "http://localhost:3001/api/auth/register",
+                "https://acessiway-backend.onrender.com",
                 {
                     method: "POST",
                     headers: {

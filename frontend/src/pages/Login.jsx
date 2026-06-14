@@ -168,7 +168,7 @@ export default function Login() {
         try {
 
             const response = await fetch(
-                "http://localhost:3001/api/auth/login",
+                "https://acessiway-backend.onrender.com",
                 {
                     method: "POST",
 
