@@ -526,7 +526,7 @@ export default function AccessibilityToolbar() {
 
         try {
             const response = await fetch(
-                `http://localhost:3001/api/users/atualizar/${user.id}`,
+                `https://acessiway-backend.onrender.com/api/users/atualizar/${user.id}`,
                 {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },

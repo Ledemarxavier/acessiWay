@@ -244,7 +244,7 @@ export default function Conversor() {
 
         setConverting(true);
         try {
-            const response = await fetch("http://localhost:3001/api/converter", {
+            const response = await fetch("https://acessiway-backend.onrender.com", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ text: currentText, format }),

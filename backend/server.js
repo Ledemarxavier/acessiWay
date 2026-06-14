@@ -32,4 +32,4 @@ app.get('/', (req, res) => {
     res.json({ status: 'AcessiWay Backend rodando!' });
 });
 
-app.listen(3001, () => console.log('Backend rodando em http://localhost:3001'));
+app.listen(3001, () => console.log('Backend rodando em https://acessiway-backend.onrender.com'));
