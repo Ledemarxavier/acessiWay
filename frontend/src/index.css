@@ -38,6 +38,66 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+    html.contrast-high_contrast {
+        filter: contrast(2) brightness(0.9);
+    }
+
+    html.contrast-inverted {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    html.contrast-yellow_black,
+    html.contrast-yellow_black body {
+        background: black !important;
+    }
+
+        html.contrast-yellow_black * {
+            background: black !important;
+            color: yellow !important;
+            border-color: yellow !important;
+        }
+
+    html.font-size-large {
+        font-size: 120%;
+    }
+
+    html.font-size-extra-large {
+        font-size: 140%;
+    }
+
+    html.line-spacing-large * {
+        line-height: 2 !important;
+    }
+
+    html.font-arial body {
+        font-family: Arial, sans-serif !important;
+    }
+
+    html.font-verdana body {
+        font-family: Verdana, sans-serif !important;
+    }
+
+    html.font-opendyslexic body {
+        font-family: 'OpenDyslexic', sans-serif !important;
+    }
+    html.contrast-high {
+        filter: contrast(2) brightness(0.9);
+    }
+
+    html.contrast-inverted {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    html.contrast-yellow-black {
+        filter: none;
+        background: black !important;
+    }
+
+        html.contrast-yellow-black * {
+            background: black !important;
+            color: yellow !important;
+            border-color: yellow !important;
+        }
 
   .dark {
     --background: 0 0% 3.9%;
