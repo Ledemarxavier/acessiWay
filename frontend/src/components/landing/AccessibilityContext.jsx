@@ -43,44 +43,48 @@ export function AccessibilityProvider({ children }) {
     }, [user]);
 
     useEffect(() => {
-
         const html = document.documentElement;
 
+        // Remove classes antigas
         html.classList.remove(
-            "contrast-normal",
-            "contrast-high_contrast",
-            "contrast-inverted",
-            "contrast-yellow_black",
-
-            "font-default",
-            "font-atkinson",
-            "font-opendyslexic",
-            "font-arial",
-            "font-verdana",
-
-            "font-size-normal",
-            "font-size-large",
-            "font-size-extra-large",
-
-            "line-spacing-normal",
-            "line-spacing-large"
+            "contrast-normal", "contrast-high_contrast",
+            "contrast-inverted", "contrast-yellow_black",
+            "font-default", "font-arial", "font-verdana", "font-opendyslexic",
+            "font-size-normal", "font-size-large", "font-size-extra-large",
+            "line-spacing-normal", "line-spacing-large"
         );
 
-        html.classList.add(
-            `contrast-${preferences.contrast_mode}`
-        );
+        html.classList.add(`contrast-${preferences.contrast_mode}`);
+        html.classList.add(`font-${preferences.font_family}`);
+        html.classList.add(`font-size-${preferences.font_size}`);
+        html.classList.add(`line-spacing-${preferences.line_spacing}`);
 
-        html.classList.add(
-            `font-${preferences.font_family}`
-        );
+        // Aplica contraste diretamente via style
+        const contrastMap = {
+            high_contrast: "contrast(2) brightness(0.9)",
+            inverted: "invert(1) hue-rotate(180deg)",
+            normal: "none",
+            yellow_black: "none",
+        };
 
-        html.classList.add(
-            `font-size-${preferences.font_size}`
-        );
+        html.style.filter = contrastMap[preferences.contrast_mode] || "none";
 
-        html.classList.add(
-            `line-spacing-${preferences.line_spacing}`
-        );
+        if (preferences.contrast_mode === "yellow_black") {
+            document.body.style.background = "black";
+            document.body.style.color = "yellow";
+            const style = document.getElementById("a11y-yellow-black");
+            if (!style) {
+                const s = document.createElement("style");
+                s.id = "a11y-yellow-black";
+                s.innerHTML = "* { background: black !important; color: yellow !important; border-color: yellow !important; }";
+                document.head.appendChild(s);
+            }
+        } else {
+            document.body.style.background = "";
+            document.body.style.color = "";
+            const s = document.getElementById("a11y-yellow-black");
+            if (s) s.remove();
+        }
 
     }, [
         preferences.contrast_mode,
@@ -88,35 +92,6 @@ export function AccessibilityProvider({ children }) {
         preferences.font_size,
         preferences.line_spacing
     ]);
-
-    const updatePreferences = (newPrefs) => {
-
-        if (!user) return;
-
-        const updatedUser = {
-            ...user,
-            ...newPrefs
-        };
-
-        localStorage.setItem(
-            "user",
-            JSON.stringify(updatedUser)
-        );
-
-        setUser(updatedUser);
-    };
-
-    return (
-        <AccessibilityContext.Provider
-            value={{
-                preferences,
-                setPreferences: updatePreferences
-            }}
-        >
-            {children}
-        </AccessibilityContext.Provider>
-    );
-}
 
 export function useAccessibility() {
     return useContext(AccessibilityContext);
