@@ -68,6 +68,12 @@ function applyLocalSettings(settings) {
 
     const spacingMap = { normal: "1.5", relaxed: "1.8", loose: "2.2" };
     document.body.style.lineHeight = spacingMap[settings.lineSpacing] || "1.5";
+
+    // Aplica contraste
+    root.classList.remove("contrast-high", "contrast-inverted", "contrast-yellow-black");
+    if (settings.contrast === "high_contrast") root.classList.add("contrast-high");
+    if (settings.contrast === "inverted") root.classList.add("contrast-inverted");
+    if (settings.contrast === "yellow_black") root.classList.add("contrast-yellow-black");
 }
 
 export default function AccessibilityToolbar() {
@@ -501,9 +507,37 @@ export default function AccessibilityToolbar() {
     // SALVAR
     // ==========================================
     const update = async (key, value) => {
-
         const updatedSettings = { ...settings, [key]: value };
         setSettings(updatedSettings);
+
+        // Aplica contraste imediatamente no DOM
+        if (key === "contrast") {
+            const html = document.documentElement;
+            const contrastMap = {
+                high_contrast: "contrast(2) brightness(0.9)",
+                inverted: "invert(1) hue-rotate(180deg)",
+                normal: "none",
+                yellow_black: "none",
+            };
+            html.style.filter = contrastMap[value] || "none";
+
+            if (value === "yellow_black") {
+                document.body.style.background = "black";
+                document.body.style.color = "yellow";
+                const existing = document.getElementById("a11y-yellow-black");
+                if (!existing) {
+                    const s = document.createElement("style");
+                    s.id = "a11y-yellow-black";
+                    s.innerHTML = "* { background: black !important; color: yellow !important; border-color: yellow !important; }";
+                    document.head.appendChild(s);
+                }
+            } else {
+                document.body.style.background = "";
+                document.body.style.color = "";
+                const s = document.getElementById("a11y-yellow-black");
+                if (s) s.remove();
+            }
+        }
 
         if (!user) return;
 
