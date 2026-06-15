@@ -1,0 +1,11 @@
+html.contrast-high_contrast { filter: contrast(2) brightness(0.9) !important; }
+html.contrast-inverted { filter: invert(1) hue-rotate(180deg) !important; }
+html.contrast-yellow_black { background: black !important; }
+html.contrast-yellow_black body { background: black !important; }
+html.contrast-yellow_black * { background: black !important; color: yellow !important; border-color: yellow !important; }
+html.font-size-large { font-size: 120% !important; }
+html.font-size-extra-large { font-size: 140% !important; }
+html.line-spacing-large * { line-height: 2 !important; }
+html.font-arial body { font-family: Arial, sans-serif !important; }
+html.font-verdana body { font-family: Verdana, sans-serif !important; }
+html.font-opendyslexic body { font-family: 'OpenDyslexic', sans-serif !important; }
